@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+body{
+    background-color: #535353;
+    font-family: 'Open Sans', sans-serif;
+}
+.clear{
+    clear: both;
+}    
+#container{
+    width: 80%;
+    margin: 50px auto;
+}
+form{
+    text-align: center;
+    padding: 50px;
+}
+form {
+    display: block;
+    margin: 0 auto;
+}
+form > input{
+    width: 300px;
+    height: 40px !important;
+    background-color: transparent;
+    border:none;
+    color: #fff;
+    outline:none;
+    border-bottom: 2px solid #85eae2;
+}
+form button{
+    margin-top: 20px;
+    background-color: transparent;
+    padding: 15px 30px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border:none;
+    color: #535353;
+    background-color: #85eae2;
+}
+.xAxis, .yAxis{
+    float: left;
+    width: 50%;
+    display: none;
+}
+.xAxis p, .yAxis p{
+    font-family: inherit !important;
+    font-weight: lighter;
+    color: #fff;
+}
+.xAxis input, .yAxis input{
+    background-color: transparent;
+    border:none;
+    display: block !important;
+    color: #fff;
+    margin: 0 auto;
+    outline:none;
+    border-bottom: 2px solid #85eae2;
+    height: 40px !important;
+}
