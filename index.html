@@ -12,7 +12,7 @@
 <script src="https://code.highcharts.com/modules/broken-axis.js"></script>
 <script src="theme.js"></script>
 
-    <form id='inputData' action="">
+  <div class="form">
         <input type="number" name="breakPoints" id="breakPoints" placeholder="Колличество узлов">
         <div class="clear"></div>
         
@@ -26,28 +26,30 @@
             
         </div>
         <div class="clear"></div>
-        <button type="submit" name="submit">Построить график</button>
-    </form>
+        <button name="submit">Построить график</button>
+    </div>
 
 <div id="container"></div>
 
 <script type="text/javascript">
-     var chart = Highcharts.chart('container', {
-        chart:{
-              type: 'line',  
-        },
-         yAxis: {
-             tickInterval : 0.25,
-         },
-         xAxis: {
-             tickInterval : 0.25,
-         },
-         series :[{
-             data: [],
-         }]
-    });
+//     var chart = Highcharts.chart('container', {
+//        chart:{
+//              type: 'line',  
+//        },
+//         yAxis: {
+//             tickInterval : 0.25,
+//         },
+//         xAxis: {
+//             tickInterval : 0.25,
+//         },
+//         series :[{
+//             data: [],
+//         }]
+//    });
     
 	</script>
+	<script src="math.js"></script>
+
 	<script>
     $(document).ready(function(){
         $('#breakPoints').on('focusout',function(){
@@ -58,8 +60,8 @@
             
             for (var i = 0; i < numberOfBreakpoints; i++)
             {
-                $('.xAxis').append('<input type="number" name="X[]" placeholder="x' + i + '">'); 
-                $('.yAxis').append('<input type="number" name="Y[]" placeholder="y' + i + '">'); 
+                $('.xAxis').append('<input type="number" name="X'+i+'" placeholder="x' + i + '">'); 
+                $('.yAxis').append('<input type="number" name="Y'+i+'" placeholder="y' + i + '">'); 
             }
             console.log(numberOfBreakpoints);
             $('.xAxis, .yAxis').slideDown();
@@ -70,9 +72,41 @@
         $(document).ready(function(){
             $('button[name="submit"]').click(function(e){
                 e.preventDefault();
+                var numberOfBreakpoints = $('#breakPoints').val();
+                dataX = [];
+                dataY =[];
+                for(var i = 0; i < numberOfBreakpoints; i++)
+                {
+                    dataX[i] = Number($('.xAxis').children('input[name=X'+i+']').val());
+                    dataY[i] = Number($('.yAxis').children('input[name=Y'+i+']').val());
+                    
+                }
+                init();
+                //dataX = divisionDataX(dataX,25);
+               // dataY = divisionDataY(dataY,25);
+                setTimeout(function(){
+                    initData(dataX,dataY);
+                },1000);
+                var lag = lagrange(dataX,dataY,1.5);
+                console.log(lag);
+                
             })
         })
     </script>
-		<script src="math.js"></script>
+			<script>
+function builtChart(dataY,dataX){
+   chart.series[0].data.length = 0;
+     for(var i = 0; i < dataY.length; i++){
+         
+        chart.series[0].addPoint([
+            dataY[i],
+            dataX[i],
+        ]);
+         
+    }
+     chart.redraw();
+    console.log(dataY,dataX);
+}
+</script>
 	</body>
 </html>

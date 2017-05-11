@@ -15,15 +15,15 @@ body{
     width: 80%;
     margin: 50px auto;
 }
-form{
+.form{
     text-align: center;
     padding: 50px;
 }
-form {
+.form {
     display: block;
     margin: 0 auto;
 }
-form > input{
+.form > input{
     width: 300px;
     height: 40px !important;
     background-color: transparent;
@@ -32,7 +32,7 @@ form > input{
     outline:none;
     border-bottom: 2px solid #85eae2;
 }
-form button{
+.form button{
     margin-top: 20px;
     background-color: transparent;
     padding: 15px 30px;
@@ -41,6 +41,10 @@ form button{
     border:none;
     color: #535353;
     background-color: #85eae2;
+}
+ button:hover{
+    background-color: #313131;
+    color: #85eae2;
 }
 .xAxis, .yAxis{
     float: left;
