@@ -8,6 +8,32 @@ body{
     background-color: #535353;
     font-family: 'Open Sans', sans-serif;
 }
+h1{
+    text-transform: uppercase;
+    text-align: center;
+    color: #85eae2;
+    margin-top: 20px;
+    padding: 20px 0px;
+    position: relative;
+    font-weight: lighter;
+}
+h1:after{
+    content: 'с помощью многочлена Лагранжа';
+    position: absolute;
+    font-size: 16px;
+    width: 350px;
+    bottom: 0;
+    left:50%;
+    color: #d96868;
+    margin: 0 -132px;
+    font-weight: bold;
+}
+h2{
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: lighter;
+    margin: 20px 0px;
+}
 .clear{
     clear: both;
 }    
@@ -23,7 +49,7 @@ body{
     display: block;
     margin: 0 auto;
 }
-.form > input{
+.form  input{
     width: 300px;
     height: 40px !important;
     background-color: transparent;
@@ -65,4 +91,21 @@ body{
     outline:none;
     border-bottom: 2px solid #85eae2;
     height: 40px !important;
+}
+.graf, .inPoint{
+    width: 50%;
+    float: left;
+}
+.answerPoint{
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: lighter;
+    color: #d96868;
+}
+.point{
+    font-weight: bold;
+}
+.value{
+    font-weight: bold;
 }

@@ -3,7 +3,19 @@
 //    
 //    }
 //});
-
+function builtChart(dataY,dataX){
+   chart.series[0].data.length = 0;
+     for(var i = 0; i < dataY.length; i++){
+         
+        chart.series[0].addPoint([
+            dataY[i],
+            dataX[i],
+        ]);
+         
+    }
+     chart.redraw();
+    console.log(dataY,dataX);
+}
 function initData(dataY,dataX){
     init();
     var dataY = dataY;
@@ -53,15 +65,11 @@ function divisionDataX(dataX,divisionNum)
     dataTemp[0] = min;
     var i = 0;
     while(dataTemp[i] < max)
-    {   
-       
-        
-        dataTemp[i+1]=dataTemp[i]+step;
-        
-        i++;
-       
+    {       
+        dataTemp[i+1]=dataTemp[i]+step; 
+        i++;   
     }
-   console.log(dataTemp);
+  //console.log(dataTemp);
     return dataTemp;
     //console.log(step);
 }
@@ -98,9 +106,9 @@ function divisionDataY(dataY,divisionNum)
         dataTemp[i+1]=dataTemp[i]+step;
         
         i++;
-       
+        
     }
-   console.log(dataTemp);
+//   console.log(dataTemp);
     return dataTemp;
     //console.log(step);
 }
@@ -111,7 +119,7 @@ function lagrange(dataX,dataY,x)
     {
         var Lagrange = dataY[i]*basispolynome(dataX,x,i);
         sum = sum + Lagrange;
-        //console.log(dataY[i]);
+        console.log(Lagrange/x);
     }
     return sum;
 }
@@ -127,7 +135,7 @@ function basispolynome(dataX,x,n)
             arg  = 1;
         }
         res = res*arg;
-        console.log(res);
+//        console.log(res);
     }
     
     return res;

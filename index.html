@@ -11,102 +11,37 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/broken-axis.js"></script>
 <script src="theme.js"></script>
-
+<h1>Интерполяция функций</h1>
   <div class="form">
-        <input type="number" name="breakPoints" id="breakPoints" placeholder="Колличество узлов">
-        <div class="clear"></div>
-        
-        <div class="xAxis">
-           <p>Значения по Х</p>
+<div class="graf">
+           <h2>Построение графика</h2>
+            <input type="number" name="breakPoints" id="breakPoints" placeholder="Колличество узлов">
+            <div class="clear"></div>
             
-        </div>
-        
-        <div class="yAxis">
-           <p>Значения по У</p>
-            
-        </div>
-        <div class="clear"></div>
-        <button name="submit">Построить график</button>
-    </div>
-
-<div id="container"></div>
-
-<script type="text/javascript">
-//     var chart = Highcharts.chart('container', {
-//        chart:{
-//              type: 'line',  
-//        },
-//         yAxis: {
-//             tickInterval : 0.25,
-//         },
-//         xAxis: {
-//             tickInterval : 0.25,
-//         },
-//         series :[{
-//             data: [],
-//         }]
-//    });
-    
-	</script>
-	<script src="math.js"></script>
-
-	<script>
-    $(document).ready(function(){
-        $('#breakPoints').on('focusout',function(){
-            
-            var numberOfBreakpoints = $(this).val();
-            $('.xAxis').empty();
-            $('.yAxis').empty();
-            
-            for (var i = 0; i < numberOfBreakpoints; i++)
-            {
-                $('.xAxis').append('<input type="number" name="X'+i+'" placeholder="x' + i + '">'); 
-                $('.yAxis').append('<input type="number" name="Y'+i+'" placeholder="y' + i + '">'); 
-            }
-            console.log(numberOfBreakpoints);
-            $('.xAxis, .yAxis').slideDown();
-
-          
-        })
-    });
-        $(document).ready(function(){
-            $('button[name="submit"]').click(function(e){
-                e.preventDefault();
-                var numberOfBreakpoints = $('#breakPoints').val();
-                dataX = [];
-                dataY =[];
-                for(var i = 0; i < numberOfBreakpoints; i++)
-                {
-                    dataX[i] = Number($('.xAxis').children('input[name=X'+i+']').val());
-                    dataY[i] = Number($('.yAxis').children('input[name=Y'+i+']').val());
-                    
-                }
-                init();
-                //dataX = divisionDataX(dataX,25);
-               // dataY = divisionDataY(dataY,25);
-                setTimeout(function(){
-                    initData(dataX,dataY);
-                },1000);
-                var lag = lagrange(dataX,dataY,1.5);
-                console.log(lag);
+            <div class="xAxis">
+               <p>Значения по Х</p>
                 
-            })
-        })
-    </script>
-			<script>
-function builtChart(dataY,dataX){
-   chart.series[0].data.length = 0;
-     for(var i = 0; i < dataY.length; i++){
-         
-        chart.series[0].addPoint([
-            dataY[i],
-            dataX[i],
-        ]);
-         
-    }
-     chart.redraw();
-    console.log(dataY,dataX);
-}
-</script>
+            </div>
+            
+            <div class="yAxis">
+               <p>Значения по У</p>
+                
+            </div>
+            <div class="clear"></div>
+            <button name="submit">Построить график</button>
+            </div>
+        <div class="inPoint">
+        <h2>Узнать значение функции в точке</h2>
+   
+              
+                    <input type="number" name="valueInPoint" placeholder="Значение аргумнта"><br>
+                    <button name='submitInPoint'>Узнать значение</button>
+                    <p class="answerPoint">Значение функции в точке F(<span class="point"></span>) = <span class="value"></span></p>
+        </div>
+    </div>
+<div class="clear"></div>
+<div id="container"></div>
+	<script src="math.js"></script>
+	<script src='lagrange.js'></script>
 	</body>
 </html>
