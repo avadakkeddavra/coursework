@@ -50,6 +50,7 @@
                 },1000);
             })
         })
+        
 $(document).ready(function(){
     $('button[name="submitInPoint"]').on('click',function(e){
         e.preventDefault();
