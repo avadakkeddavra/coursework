@@ -4,7 +4,8 @@
 //    }
 //});
 function builtChart(dataY,dataX){
-   chart.series[0].data.length = 0;
+   //chart.series[0].data.length = 0;
+    
      for(var i = 0; i < dataY.length; i++){
          
         chart.series[0].addPoint([
@@ -13,33 +14,62 @@ function builtChart(dataY,dataX){
         ]);
          
     }
-     chart.redraw();
-    console.log(dataY,dataX);
+
+    console.log(chart.series[0].data);
 }
-function initData(dataY,dataX){
+function initData(dataY,dataX,dataY2,dataX2){
     init();
     var dataY = dataY;
     var dataX = dataX;
     console.log(chart);
     builtChart(dataY,dataX);
+    buildPoints(dataY2,dataX2);
 
 }
-function init()
+function buildPoints(dataX,dataY)
+{
+     for(var i = 0; i < dataY.length; i++){
+         
+        chart.series[1].addPoint([
+            dataY[i],
+            dataX[i],
+        ]);
+     }
+}
+function init(dataX,dataY)
 {
         chart = Highcharts.chart('container', {
         chart:{
               type: 'line',  
         },
-         yAxis: {
-             tickInterval : 0.1,
+        yAxis:{
+            tickInterval : 0.5,
+        },
+        xAxis : {
+            tickLength : 20,
+            minRange : 10,
+            tickPixelInterval: 10
+        },
+         series :
+        [{
+             data: []
          },
-         xAxis: {
-             tickInterval : 0.1,
-         },
-         series :[{
-             data: [],
-         }]
+            {
+             data: []
+         }],
     });
+
+}
+function max(dataX){
+    var max = dataX[0];    
+    for(var i = 0; i < dataX.length;i++)
+        {
+            if(dataX[i]>max)
+                {
+                    max = dataX[i]
+                }
+        }
+    return max;
 }
 function divisionDataX(dataX,divisionNum)
 {

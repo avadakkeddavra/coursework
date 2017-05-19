@@ -28,12 +28,24 @@
                     dataY[i] = Number($('.yAxis').children('input[name=Y'+i+']').val());
                     
                 }
-
+                tempX = dataX;
+                tempY = dataY;
+                var temp = [];
+                temp[0] = -max(dataX);
+                
+                for(var i = 0; i < dataX.length; i++)
+                    {
+                        temp[i+1] = dataX[i];
+                    }
+                console.log(temp);
+                
+                
                 init();
-                dataX2 = divisionDataX(dataX,25);
+                //buildPoints(dataY,dataX);
+                dataX2 = divisionDataX(temp,15);
                        
                 var Y = [];
-                //console.log(dataX,dataY,dataX2);
+                console.log(dataX,dataY,dataX2);
                 
                 setTimeout(function(){
                     
@@ -42,11 +54,11 @@
                      Y[i] = lagrange(dataX,dataY,dataX2[i]);
                      
                 }
-                console.log(Y); 
+                console.log(Y,dataX2); 
                 },1000)
                
                 setTimeout(function(){
-                    initData(dataX2,Y);
+                    initData(dataX2,Y,tempY,tempX);
                 },1000);
             })
         })
